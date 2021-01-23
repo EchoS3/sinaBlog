@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('head', {}); %>
+    <title>Document</title>
+</head>
+<body>
+     <!-- 导航 -->
+<ul class="layui-nav layui-bg-green" lay-filter="">
+    <li class="layui-nav-item "><a href="/index">博客</a></li>
+    <li class="layui-nav-item "><a href="/details">详情</a></li>
+    <li class="layui-nav-item layui-this"> <a href="/write">定制blog</a> </li>
+     <li class="layui-nav-item"><a href="">博客大牛</a></li>
+    <li class="layui-nav-item" style="float: right; "><a href="/login">登录</a></li>
+    <li class="layui-nav-item" style="float: right; "><a href="/zhuce">注册</a></li>
+  </ul>
+   
+  <script>
+  //注意：导航 依赖 element 模块，否则无法进行功能性操作
+  layui.use('element', function(){
+    var element = layui.element;
+    
+    //…
+  });
+  </script>
+  <!-- 导航end -->
+  <!-- 中部内容 -->
+  <form class="layui-form" action="">
+    <div class="layui-form-item w">
+      <label class="layui-form-label">输入框</label>
+      <div class="layui-input-block">
+        <input type="text" name="title"  placeholder="请输入标题" class="layui-input">
+      </div>
+    </div>
+     <div class="layui-form-item w layui-form-text">
+      <label class="layui-form-label">文本域</label>
+      <div class="layui-input-block">
+        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item w">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      </div>
+    </div>
+  </form>
+   
+  <script>
+  //Demo
+  layui.use('form', function(){
+    var form = layui.form;
+    
+    //监听提交
+    form.on('submit(formDemo)', function(data){
+      layer.msg(JSON.stringify(data.field));
+      return false;
+    });
+  });
+  </script>
+  <!-- 中部内容end -->
+</body>
+</html>

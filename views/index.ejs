@@ -8,27 +8,24 @@
   </head>
   <body>
     <!-- 导航 -->
-    <ul class="layui-nav layui-bg-green" lay-filter="">
-      <li class="layui-nav-item layui-this"><a href="">博客</a></li>
-      <li class="layui-nav-item "><a href="">详情</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">定制blog</a>
-      </li>
-      <li class="layui-nav-item"><a href="">博客大牛</a></li>
-      <li class="layui-nav-item" style="float: right; "><a href="/login">登录</a></li>
-      <li class="layui-nav-item" style="float: right; "><a href="/zhuce">注册</a></li>
-    </ul>
-     
-    <script>
-    //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
-      var element = layui.element;
-      
-      //…
-    });
-    </script>
-    <!-- 导航end -->
+<ul class="layui-nav layui-bg-green" lay-filter="">
+  <li class="layui-nav-item layui-this"><a href="/index">博客</a></li>
+  <li class="layui-nav-item "><a href="/details">详情</a></li>
+  <li class="layui-nav-item"> <a href="/write">定制blog</a> </li>
+   <li class="layui-nav-item"><a href="">博客大牛</a></li>
+  <li class="layui-nav-item" style="float: right; "><a href="/login">登录</a></li>
+  <li class="layui-nav-item" style="float: right; "><a href="/zhuce">注册</a></li>
+</ul>
+ 
+<script>
+//注意：导航 依赖 element 模块，否则无法进行功能性操作
+layui.use('element', function(){
+  var element = layui.element;
+  
+  //…
+});
+</script>
+<!-- 导航end -->
     <!-- 中部 -->
     <div class="layui-col-md9">
     <table class="layui-table " lay-skin="nob">
@@ -43,6 +40,8 @@
           <th>用户</th>
           <th>发布时间</th>
           <th>内容</th>
+          <th>操作</th>
+          <th></th>
         </tr> 
       </thead>
       <tbody>
@@ -50,11 +49,17 @@
           <td>贤心</td>
           <td>2016-11-29</td>
           <td>人生就像是一场修行</td>
+          <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
+            <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a>
+          </td>
         </tr>
         <tr>
           <td>许闲心</td>
           <td>2016-11-28</td>
           <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+          <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
+          <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a>
+        </td>
         </tr>
       </tbody>
     </table>
