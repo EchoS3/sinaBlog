@@ -54,22 +54,22 @@ router.post('/addUser', (req, res, next) => {
   //保存
   userI.save((err, result) => {
     if (!err) {
-      // res.send(result)
-      res.redirect('/login')
+       res.send(result)
+      //res.redirect('/login')
     }
   })
 })
 
 
 //登录---查询
-router.post('/signIn', (req, res, next) => {
+router.post('/login', (req, res, next) => {
   //从表单获取数据
-  console.log(0)
+  //console.log(0)
   let userInfo = {
     userName: req.body.userName,
     password: req.body.password,
   }
-  console.log(userInfo)
+  console.log(req.body)
   //验证
   //查询
   User.findOne(userInfo, function (err, result) {

@@ -16,14 +16,14 @@
 <body>
   <div class="layui-container">
     <div class="layui-row">
-      <form action="/users/signIn" method="POST">
+      <form action="/users/login" method="POST">
         <div class=" layui-form-item">
         <h1>用户登录</h1>
         <div class=" layui-form-item"> <input type="text" name="userName" placeholder="请输入用户名" class="layui-input">
         </div>
         <div class=" layui-form-item"> <input type="password" name="password" placeholder="请输入密码" class="layui-input">
         </div>
-        <div class=" layui-form-item"> <input type="submit" class="layui-btn" value="立即提交"> </div>
+        <div class=" layui-form-item">  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button> </div>
 
       </form>
  
