@@ -10,11 +10,13 @@ let fs = require('fs')
 
 router.post('/add',(req,res,next) => {
     console.log(req.body);
+    let date = new Date()
+    console.log(date);
     //向数据库添加用户信息
     let articleInfo = {
         title:req.body.title,
-        content:req.body.content
-      
+        content:req.body.content,
+        datetime:date,
     }
     //页面表单数据，放入模型
     let articleI = new Article(articleInfo)
@@ -47,7 +49,7 @@ let file = files.upload[0]
    //读取文件流
    let rStream = fs.createReadStream(file.path)
    //拼接路径
-   let filePath = '/uploads' + file.originalFilename
+   let filePath = '/uploads/' + file.originalFilename
     //  写入文件流
     let wStream = fs.createWriteStream('./public'+ filePath)
     // 触发读写管道，实现上传

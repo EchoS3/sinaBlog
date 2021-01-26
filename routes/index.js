@@ -1,12 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+// 文章模板导入
+let Article = require('../models/article')
 
+/* GET home page. */
+router.get('/', async function(req, res, next) {
+  let data = await Article.find()
+   console.log(data)
 let userName = req.session.userName || ''
 
-  res.render('index', { userName});
+  res.render('index', { userName,data});
 });
 
 //导航路由配置

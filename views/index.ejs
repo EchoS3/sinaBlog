@@ -32,44 +32,87 @@ layui.use('element', function(){
 });
 </script>
 <!-- 导航end -->
+<!-- 中部 -->
+<div class="layui-col-md9">
+  <table class="layui-table " lay-skin="nob">
+    
+    <colgroup>
+      <col width="150">
+      <col width="200">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>用户</th>
+        <th>发布时间</th>
+        <th>内容</th>
+        <th>操作</th>
+        <th></th>
+      </tr> 
+    </thead>
+    <tbody>
 
-    <!-- 中部 -->
-    <div class="layui-col-md9">
-    <table class="layui-table " lay-skin="nob">
-      
-      <colgroup>
-        <col width="150">
-        <col width="200">
-        <col>
-      </colgroup>
-      <thead>
-        <tr>
-          <th>用户</th>
-          <th>发布时间</th>
-          <th>内容</th>
-          <th>操作</th>
-          <th></th>
-        </tr> 
-      </thead>
-      <tbody>
-        <tr>
-          <td>贤心</td>
-          <td>2016-11-29</td>
-          <td>人生就像是一场修行</td>
-          <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
-            <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a>
-          </td>
-        </tr>
-        <tr>
-          <td>许闲心</td>
-          <td>2016-11-28</td>
-          <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-          <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
+  <% data.map(item=>{
+
+  %>
+<tr>
+  <td><%= item.title%></td>
+  <td><%= item.datetime%></td>
+  <td><%= item.content%></td>
+  <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
+  <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a></td>
+
+</tr>   
+  <%  }) %>
+</tbody>
+</table>
+</div>
+<!-- 中部end -->
+</html>
+
+
+
+
+
+
+
+
+<!-- 中部 -->
+<!-- <div class="layui-col-md9">
+  <table class="layui-table " lay-skin="nob">
+    
+    <colgroup>
+      <col width="150">
+      <col width="200">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>用户</th>
+        <th>发布时间</th>
+        <th>内容</th>
+        <th>操作</th>
+        <th></th>
+      </tr> 
+    </thead>
+    <tbody>
+      <tr>
+        <td>贤心</td>
+        <td>2016-11-29</td>
+        <td>人生就像是一场修行</td>
+        <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
           <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a>
         </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-   <!-- 中部end -->
-</html>
+      </tr>
+      <tr>
+        <td>许闲心</td>
+        <td>2016-11-28</td>
+        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
+        <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>  -->
+ <!-- 中部end
