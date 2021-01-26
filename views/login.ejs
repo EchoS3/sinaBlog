@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- <meta charset="UTF-8">
+  <!-- <meta charset="UTF-8">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/libs/layui/css/layui.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
-    <!-- ejs语法 -->
-    <%- include('head', {}); %>
-    
-    <title>Document</title>
-</head>
-<body>
-    <div class="layui-container">  
-        <div class="layui-row">
-            <div class="layui-form-item">
-                <h1>用户登录</h1>
-                <label class="layui-form-label">用户名</label>
-                <div class="layui-input-block">
-                  <input type="text" name="title" required  placeholder="请输入用户名" class="layui-input">
-                </div>
-              </div>
+  <!-- ejs语法 -->
+  <%- include('head', {}); %>
 
-              <div class="layui-form-item">
-                <label class="layui-form-label">密码</label>
-                <div class="layui-input-block">
-                  <input type="password" name="title" required  placeholder="请输入密码" class="layui-input">
-                </div>
-              </div>
-              <div class="layui-form-item">
-                <div class="layui-input-block">
-                  <button class="layui-btn" lay-submit lay-filter="formDemo"><a href="/index">立即提交</a></button>
-                </div>
-                <div class="zhu">
-                    若无账号，请<a href="/zhuce">立即注册</a>
-                  </div>
-              </div>
-              
+    <!-- <title>Document</title> -->
+</head>
+
+<body>
+  <div class="layui-container">
+    <div class="layui-row">
+      <form action="/users/signIn" method="POST">
+        <div class=" layui-form-item">
+        <h1>用户登录</h1>
+        <div class=" layui-form-item"> <input type="text" name="userName" placeholder="请输入用户名" class="layui-input">
         </div>
+        <div class=" layui-form-item"> <input type="password" name="password" placeholder="请输入密码" class="layui-input">
+        </div>
+        <div class=" layui-form-item"> <input type="submit" class="layui-btn" value="立即提交"> </div>
+
+      </form>
+ 
+          <div class="zhu">
+            若无账号，请<a href="/zhuce">立即注册</a>
+          </div>
+        </div>
+      
     </div>
+  </div>
 </body>
+
 </html>

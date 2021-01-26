@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res, next) {
+
+let userName = req.session.userName || ''
+
+  res.render('index', { userName});
 });
 
 //导航路由配置
 router.get('/details', function(req, res) {
-  res.render('details', { });
+  res.render('details', {  });
 });
 //登录路由配置
 router.get('/login', function(req, res) {
@@ -16,10 +19,11 @@ router.get('/login', function(req, res) {
 });
 //注册路由配置
 router.get('/zhuce', function(req, res) {
-  res.render('zhuce', { });
+  res.render('zhuce', {  });
 });
 //写博客页面路由配置
 router.get('/write', function(req, res) {
-  res.render('write', { });
+  let userName = req.session.userName
+  res.render('write', {  });
 });
 module.exports = router;
