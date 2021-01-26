@@ -35,11 +35,16 @@
       </div>
     </div>
      <div class="layui-form-item w layui-form-text">
+
+      <input type="file" name="file" id="">
+
       <label class="layui-form-label">文本域</label>
       <div class="layui-input-block">
         <textarea name="content" placeholder="请输入内容" id="editor">今天又是秃头的一天</textarea>
       </div>
     </div>
+     
+
     <div class="layui-form-item w">
       <div class="layui-input-block">
         <input class="layui-btn"  type="submit" value="发布">
@@ -49,5 +54,20 @@
   </form>
    
   <!-- 中部内容end -->
+
+  <script src="/libs/ckeditor5-build-classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ),{
+              ckfinder: {
+            // Upload the images to the server using the CKFinder QuickUpload command.
+            uploadUrl: '/article/upload'
+        },
+        } )
+        
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>
