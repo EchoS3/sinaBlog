@@ -56,11 +56,11 @@ layui.use('element', function(){
 
   %>
 <tr>
-  <td><%= item.title%></td>
-  <td><%= item.datetime%></td>
-  <td><%- item.content%></td>
-  <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
-  <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a></td>
+  <td><a href="/details?_id=<%= item._id %>"><%= item.title%></a></td>
+  <td><a href="/details?_id=<%= item._id %>"></a><%= item.datetime%></a></td>
+  <td><a href="/details?_id=<%= item._id %>"></a><%- item.content%></a></td>
+  <td><a href="/write?_id=<%=item._id%>&page=<%=data.currPage%>" class="layui-btn layui-btn layui-btn-xs">编辑</a> </td>
+  <td> <a href="#" class="layui-btn layui-btn layui-btn-xs">删除</a></td>
 
 </tr>   
   <%  }) %>

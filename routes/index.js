@@ -23,6 +23,7 @@ let pageSize = 2
 //确定每页显示的数据
 data.blogList = await Article.find()
 .limit(pageSize)//限定展示出来的条数
+.sort({_id:'desc'})//倒叙
 .skip((data.currPage - 1) * pageSize)//限定从第几条开始截取
 //总数据
 let blogAll = await Article.find()
@@ -34,9 +35,15 @@ data.pagesTotle = Math.ceil(blogAll.length / pageSize)
    res.render('index', { userName,data});
 });
 
-//导航路由配置
-router.get('/details', function(req, res) {
-  res.render('details', {  });
+//详情页路由配置
+router.get('/details',async function(req, res) {
+   let blokId = req.query._id
+  console.log(blokId);
+
+  let data = await Article.findOne({_id:blokId})
+ 
+
+  res.render('details', { data });
 });
 //登录路由配置
 router.get('/login', function(req, res) {
@@ -47,8 +54,27 @@ router.get('/zhuce', function(req, res) {
   res.render('zhuce', {  });
 });
 //写博客页面路由配置
-router.get('/write', function(req, res) {
-  let userName = req.session.userName
-  res.render('write', {  });
+router.get('/write',async function(req, res) {
+  let userName = req.session.userName || ''
+let _id = req.query._id || ''
+if(_id){
+  let page = req.query.page
+
+  console.log(_id)
+console.log(page)
+//查询文章数据渲染
+let details = await Article.findOne({_id:_id})
+//时间处理
+res.render('write',{ userName,details })
+}else{
+
+
+
+
+
+
+
+  res.render('write', { userName });
+}
 });
 module.exports = router;

@@ -9,7 +9,7 @@
 <body>
     <!-- 导航 -->
 <ul class="layui-nav layui-bg-green" lay-filter="">
-  <li class="layui-nav-item "><a href="/index">博客</a></li>
+  <li class="layui-nav-item "><a href="/">博客</a></li>
   <li class="layui-nav-item layui-this"><a href="/details">详情</a></li>
   <li class="layui-nav-item"> <a href="/write">定制blog</a> </li>
    <li class="layui-nav-item"><a href="">博客大牛</a></li>
@@ -37,10 +37,12 @@ layui.use('element', function(){
                  最新资讯
                 </div>
                 <div class="layui-card-body" style="font-size: small;">
-                  作者：大牛 发布时间：2021-01-23 10:30:00
+                 <p> 作者：<%= data.title %> </p>
+                 发布时间：<%= data.datetime%>
                 </div>
                 <div class="layui-card-body">
-                  大牛就是牛
+                  正文：
+                  <%- data.content%>
                 </div>
               </div>
 

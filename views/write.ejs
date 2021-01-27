@@ -9,7 +9,7 @@
 <body>
      <!-- 导航 -->
 <ul class="layui-nav layui-bg-green" lay-filter="">
-    <li class="layui-nav-item "><a href="/index">博客</a></li>
+    <li class="layui-nav-item "><a href="/">博客</a></li>
     <li class="layui-nav-item "><a href="/details">详情</a></li>
     <li class="layui-nav-item layui-this"> <a href="/write">定制blog</a> </li>
      <li class="layui-nav-item"><a href="">博客大牛</a></li>
@@ -31,7 +31,7 @@
     <div class="layui-form-item w">
       <label class="layui-form-label">输入框</label>
       <div class="layui-input-block">
-        <input type="text" name="title"  placeholder="请输入标题" class="layui-input" value="">
+        <input type="text" name="title"  placeholder="请输入标题" class="layui-input" value="<%=details.title%>">
       </div>
     </div>
      <div class="layui-form-item w layui-form-text">
@@ -40,7 +40,7 @@
 
       <label class="layui-form-label">文本域</label>
       <div class="layui-input-block">
-        <textarea name="content" placeholder="请输入内容" id="editor"></textarea>
+        <textarea name="content" placeholder="请输入内容" id="editor"><%-details.content%></textarea>
       </div>
     </div>
      
