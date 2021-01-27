@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 //实现用户提交信息，注册事项
 //Response 响应
 //Request 请求
-router.post('/addUser', (req, res, next) => {
+router.post('/addUser', async function (req, res, next) {
   console.log(req.body);
 
 
@@ -39,14 +39,14 @@ router.post('/addUser', (req, res, next) => {
   //   passwordC:Joi.ref('password'),
   // })
 
-  // try {
-  //   const value = await schema.validateAsync(userInfo);
-  // }
-  // catch (err) {
-  //   console.log(err.message)
+  try {
+    const value = await schema.validateAsync(userInfo);
+  }
+  catch (err) {
+    console.log(err.message)
 
-  //   // res.render('error_alert', {message: err.message })
-  // }
+    // res.render('error_alert', {message: err.message })
+  }
 
   //页面表单数据，放入模型
   let userI = new User(userInfo)

@@ -23,14 +23,14 @@
   <li class="layui-nav-item" style="float: right; "><a href="/zhuce">注册</a></li>
 </ul>
  
-<script>
+<!-- <script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
 layui.use('element', function(){
   var element = layui.element;
   
   //…
 });
-</script>
+</script> -->
 <!-- 导航end -->
 <!-- 中部 -->
 <div class="layui-col-md9">
@@ -52,13 +52,13 @@ layui.use('element', function(){
     </thead>
     <tbody>
 
-  <% data.map(item=>{
+  <% data.blogList.map(item=>{
 
   %>
 <tr>
   <td><%= item.title%></td>
   <td><%= item.datetime%></td>
-  <td><%= item.content%></td>
+  <td><%- item.content%></td>
   <td><a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">删除</a> </td>
   <td> <a href="http://www.layui.com" class="layui-btn layui-btn layui-btn-xs">修改</a></td>
 
@@ -68,6 +68,47 @@ layui.use('element', function(){
 </table>
 </div>
 <!-- 中部end -->
+
+<!-- 分页 -->
+<div class="page w1100">
+
+  <% for(let i = 1;i <= data.pagesTotle;i++){ %>
+
+  <a href="/?page=<%=i%>" class="<%- data.currPage==i?'active':''%>">
+    <%= i %>
+  </a>
+  <% } %>
+
+</div>
+<style>
+  .w1100{
+    float: right;
+    width: 300px;
+  }
+  
+  .w1100 a{
+border:solid 1px #DDDDDD;
+margin-right:2px;
+}
+.w1100 .active{
+font-weight:bold;
+display:block;
+float:left;
+padding:4px 6px;
+}
+.w1100 a:link,
+.w1100 a:visited {
+color:#009688;
+display:block;
+float:left;
+padding:3px 6px;
+text-decoration:none;
+}
+.w1100 a:hover{
+border:solid 1px #666666;
+}
+</style>
+<!-- 分页end -->
 </html>
 
 

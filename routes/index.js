@@ -6,11 +6,32 @@ let Article = require('../models/article')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let data = await Article.find()
-   console.log(data)
+  let cPage = req.query.page || 1
+  console.log(cPage);
+  // let data = await Article.find()
+  //  console.log(data)
 let userName = req.session.userName || ''
 
-  res.render('index', { userName,data});
+let data = {
+  blogList:[],//文章列表
+  currPage:cPage,//当前页数
+  pagesTotle:'',//总页数
+}
+
+//设定每页渲染的条数
+let pageSize = 2
+//确定每页显示的数据
+data.blogList = await Article.find()
+.limit(pageSize)//限定展示出来的条数
+.skip((data.currPage - 1) * pageSize)//限定从第几条开始截取
+//总数据
+let blogAll = await Article.find()
+//总页码
+data.pagesTotle = Math.ceil(blogAll.length / pageSize)
+// console.log(data.pagesTotle);
+
+
+   res.render('index', { userName,data});
 });
 
 //导航路由配置
