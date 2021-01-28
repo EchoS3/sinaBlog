@@ -39,9 +39,10 @@ data.pagesTotle = Math.ceil(blogAll.length / pageSize)
 router.get('/details',async function(req, res) {
    let blokId = req.query._id
   console.log(blokId);
-
+  
   let data = await Article.findOne({_id:blokId})
  
+  
 
   res.render('details', { data });
 });
@@ -57,6 +58,7 @@ router.get('/zhuce', function(req, res) {
 router.get('/write',async function(req, res) {
   let userName = req.session.userName || ''
 let _id = req.query._id || ''
+//如果存在id渲染页面
 if(_id){
   let page = req.query.page
 
@@ -64,17 +66,17 @@ if(_id){
 console.log(page)
 //查询文章数据渲染
 let details = await Article.findOne({_id:_id})
+details.page=page
 //时间处理
 res.render('write',{ userName,details })
+//如果不存在id，直接渲染无数据页面(null会报错-----''不会报错)
 }else{
+let details = {
+title:'',
+content:''
+}
 
-
-
-
-
-
-
-  res.render('write', { userName });
+  res.render('write', { userName,details });
 }
 });
 module.exports = router;

@@ -10,7 +10,6 @@
      <!-- 导航 -->
 <ul class="layui-nav layui-bg-green" lay-filter="">
     <li class="layui-nav-item "><a href="/">博客</a></li>
-    <li class="layui-nav-item "><a href="/details">详情</a></li>
     <li class="layui-nav-item layui-this"> <a href="/write">定制blog</a> </li>
      <li class="layui-nav-item"><a href="">博客大牛</a></li>
     <li class="layui-nav-item" style="float: right; "><a href="/login">登录</a></li>
@@ -28,6 +27,9 @@
   <!-- 导航end -->
   <!-- 中部内容 -->
   <form class="layui-form" action="article/add" method="POST">
+    <!-- 在提交的时候，需要用到的信息，顺便提交过去 -->
+    <input type="hidden" name="dId" value="<%=details._id%>">
+    <input type="hidden" name="page" value="<%=details.page%>">
     <div class="layui-form-item w">
       <label class="layui-form-label">输入框</label>
       <div class="layui-input-block">
@@ -36,18 +38,24 @@
     </div>
      <div class="layui-form-item w layui-form-text">
 
-      <input type="file" name="file" id="">
+      <!-- <input type="file" name="file" id=""> -->
 
       <label class="layui-form-label">文本域</label>
       <div class="layui-input-block">
         <textarea name="content" placeholder="请输入内容" id="editor"><%-details.content%></textarea>
+        <%if(!details._id){%>
+          <input class="layui-btn"  type="submit" value="发布">
+          <%}else{%>
+            <input class="layui-btn"  type="submit" value="确认修改">
+            <%}%>
       </div>
     </div>
      
 
     <div class="layui-form-item w">
       <div class="layui-input-block">
-        <input class="layui-btn"  type="submit" value="发布">
+        
+       
        
       </div>
     </div>

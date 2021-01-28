@@ -9,7 +9,13 @@ var Multipary = require('multiparty')
 let fs = require('fs')
 
 router.post('/add',(req,res,next) => {
-    console.log(req.body);
+    // console.log(req.body);
+
+//首先来获取下文章id，以此判断是新增还是编辑
+let _id = req.body.dId || ''
+
+//新增
+if(!_id){
     let date = new Date()
     console.log(date);
     //向数据库添加用户信息
@@ -28,6 +34,25 @@ router.post('/add',(req,res,next) => {
             res.redirect('/write')
         }
     })
+}else{//编辑
+    let page = req.body.page
+    // _id
+    // 查找一条数据并修改内容
+    // 新数据获取
+    let date = new Date()
+    let articleData = {
+        title:req.body.title,
+        content:req.body.content,
+        datetime:date,
+    }
+    Article.findByIdAndUpdate(_id, articleData, { new: true }, (err,result) => {
+         if(!err){
+            res.redirect(`/?page=${page}`)
+         }
+    })
+
+
+}
 })
 
 
@@ -63,5 +88,19 @@ let file = files.upload[0]
     })
 })
 })
-
+//文章删除的接口
+router.get('/delete',(req,res,next) => {
+    //从接口接收传输的id和页码page
+    let id = req.query._id
+    let page = req.query.page
+    console.log(id,page)
+    //根据id从数据库删除一条
+    Article.deleteOne({_id: id },err => {
+        if(!err){
+    // res.send('删除成功')
+    //返回删除前的页面
+    res.redirect(`/?page=${page}`)
+        }
+    })
+})
 module.exports = router;
